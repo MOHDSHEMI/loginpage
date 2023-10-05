@@ -8,13 +8,12 @@ const credential={
 
 // NO autMiddleware
 const authMiddleware = (req,res,next) => {
-    if (req.session.user) {
+    if (req.session.loggedIn) {
       next()
     } else {
-        return res.render('login', {
+        return res.render('base', {
            title:'Login page',
-           error:null,
-           authorized:false 
+           logout: null
         })
     }
 } 
@@ -23,10 +22,15 @@ router.get('/',authMiddleware,(req,res)=>{
     return res.redirect('/dashboard')
 })
 
+router.get('/login', (req,res)=> {
+    return res.redirect('/dashboard')
+})
+
 router.post('/login',(req,res)=>{
-    if(req.body.email== credential.email&&req.body.password==credential.password){
+    if(req.body.email== credential.email && req.body.password==credential.password){
        req.session.user = req.body.email;
-       res.redirect('/route/dashboard')
+       req.session.loggedIn = true
+       res.redirect('/dashboard')
     // res.end("login success")
     }else{
         res.end("invalid username")
@@ -39,14 +43,6 @@ router.get('/dashboard',authMiddleware,(req,res)=>{
         res.render('dashboard',{user:req.session.user})
     }else{
         res.send("Unauthorize User")
-    }
-})
-
-router.get('/dashboard',(req,res)=>{
-    if(req.session.user){
-        res.render('dashboard',{user:req.session.user})
-    }else{
-      res.end("unuthorize user")
     }
 })
 

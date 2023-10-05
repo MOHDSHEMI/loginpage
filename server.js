@@ -38,7 +38,7 @@ app.use(session({
 }))
 
 
-app.use('/route',router);
+app.use('/',router);
 
 app.get('/',(req,res)=>{
     res.render('base',{title:"Login System"});
