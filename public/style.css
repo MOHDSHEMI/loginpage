@@ -1,0 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Open+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,800;1,900&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-image:url('/assets/17973908.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.center-div{
+    padding-top: 10%;
+}
+
+.btn.btn-success{
+    padding:.4em 2em;
+    margin-top: 20px;
+}
+
+form{
+    padding:03em;
+}
+
+#login.title>span {
+    font-size:.8em;
+}
+.form-control{
+    margin-top: 15px;
+}
